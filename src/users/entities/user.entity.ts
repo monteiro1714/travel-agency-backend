@@ -9,6 +9,19 @@ export class User {
     @Column()
     name: string;
 
-    @Column()
+    @Column({unique: true})
     email: string;
+
+    @Column()
+    passwordHash: string;
+
+    @Column({default: 'client'})
+    role: string; // 'client','admin','partner'
+
+    @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+    createdAt: Date; 
+
+    @Column({type: 'timestamp', nullable: true})
+    updatedAt: Date; 
+
 }
